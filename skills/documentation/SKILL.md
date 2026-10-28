@@ -78,3 +78,7 @@ At project completion, create `docs/operations/production-readiness.md`. Separat
 - Known limits, open decisions, and prioritized work before launch.
 
 Do not invent load targets, SLOs, recovery objectives, or guarantees. Do not claim production readiness from code review alone. Do not deploy infrastructure or expand approved scope to address a recommendation. Record that work as a recommendation until the user approves it.
+
+## HTML code walkthrough
+
+When the user asks for a website that explains an existing codebase, use [the HTML code walkthrough prompt](references/html-code-walkthrough.md). Inspect the supplied source before writing the page. Save one self-contained `index.html` in the requested output location. If the user does not specify a location, place it under `docs/code-walkthrough/` when that folder fits the repository. Do not change application code. Verify setup commands against repository files. State whether you ran each command. Label claims that the source does not confirm. Do not include secrets or sensitive values.

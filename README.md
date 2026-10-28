@@ -16,7 +16,7 @@ For a full-stack project, start with `skills/full-stack-project/SKILL.md`. It li
 | `skills/full-stack-project/SKILL.md` | Design, implementation, verification, and project handoff |
 | `skills/backend/SKILL.md` | Flask APIs, PostgreSQL, SQLAlchemy, Alembic, and backend checks |
 | `skills/frontend/SKILL.md` | Next.js, React, TypeScript, Tailwind CSS, and reusable UI |
-| `skills/documentation/SKILL.md` | Progress records, decision logs, demo guides, diagrams, and production handoff |
+| `skills/documentation/SKILL.md` | Progress records, decision logs, demo guides, diagrams, production handoff, and source-based HTML code walkthroughs |
 | `skills/writing/SKILL.md` | ASD-STE100 prose and Humanizer guidance |
 | `skills/presentation/SKILL.md` | The final project presentation |
 
