@@ -37,9 +37,20 @@ Give shared components focused responsibilities, typed props, and typed callback
 
 Add design tokens after the user accepts a visual direction. Use semantic tokens for text, surfaces, fills, borders, and accents. Do not copy another site's palette or typography unless the user selects it.
 
+## Visual direction
+
+- Build on the design system or UI reference the user selects in the main app. Treat a reference as direction for the real interface, not only as a mockup or guide.
+- Use a calm neutral canvas, layered surfaces, and purposeful color to create clear visual hierarchy. Avoid stark, flat-white pages.
+- Make tables and classification categories easy to scan. Use readable type, clear labels, and concise explanations. Use text labels with color; do not make color carry meaning by itself.
+- Match brand capitalization to the name the user provides.
+- Follow the latest explicit design direction when it conflicts with an earlier visual preference.
+- Keep layouts responsive and controls accessible. Avoid extra gradients, motion, decoration, and dependencies unless they support the requested design.
+
 ## UI skill resources
 
 Use [ibelick/ui-skills](https://github.com/ibelick/ui-skills) as a reference for UI tasks. Use `ui-skills-root` to select the smallest useful skill by topic, stack, and goal. Use one skill by default, two when the task needs two clear areas of guidance, and no more than three for a broad review or redesign.
+
+Use [Tabler](https://github.com/tabler/tabler) as a reference for dashboard and admin interface patterns, including tables, forms, navigation, and responsive layouts. Use its patterns as design direction in the main app when they fit the user's chosen design. Do not add Tabler or Bootstrap dependencies unless the user selects them or the approved design needs them. Check Tabler's current documentation for component or class details.
 
 - Use `baseline-ui` for a visual cleanup.
 - Use `fixing-accessibility` when adding or changing interactive controls or accessibility behavior.

@@ -38,6 +38,8 @@ The defaults do not include login or account features. The test plan uses pytest
 
 ## UI and writing resources
 
-The frontend skill links to [ibelick/ui-skills](https://github.com/ibelick/ui-skills) for focused UI guidance and [Taste Skill](https://github.com/Leonxlnx/taste-skill) for new interfaces or major redesigns. The writing skill links to [Humanizer](https://github.com/blader/humanizer) as a supplementary prose review.
+The frontend skill links to [ibelick/ui-skills](https://github.com/ibelick/ui-skills) for focused UI guidance, [Tabler](https://github.com/tabler/tabler) for dashboard and admin interface patterns, and [Taste Skill](https://github.com/Leonxlnx/taste-skill) for new interfaces or major redesigns. The writing skill links to [Humanizer](https://github.com/blader/humanizer) as a supplementary prose review.
+
+The frontend guidance builds on the user's selected design system or UI reference in the main app. It calls for calm neutral surfaces, clear visual hierarchy, readable tables, text labels alongside color, consistent brand capitalization, responsive layouts, accessible controls, and restrained use of effects and dependencies. Follow the latest explicit design direction when preferences conflict.
 
 The presentation skill uses the [Slidesgo Minimalist Business Slides template](https://slidesgo.com/theme/minimalist-business-slides#position-1&rs=home-popular). Check its current terms and keep required credits.

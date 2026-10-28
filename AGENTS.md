@@ -20,7 +20,7 @@ Load configuration from environment variables. Keep placeholder values in `.env.
 
 - Use Docker Compose for local runs.
 - Keep the first release useful and within the scope the user approves.
-- Use IBM Plex Sans and a compact, formal work-platform style for the lead dashboard example. Use the Purple light palette, restrained accents, clear sections, compact spacing, readable tables, and visible filters.
+- Use IBM Plex Sans and a compact, formal work-platform style for the lead dashboard example. Build on the design system or UI reference the user selects in the main app. Treat a reference as direction for the real interface, not only as a mockup or guide. Use a calm neutral canvas, layered surfaces, and purposeful color to create clear hierarchy. Make tables and categories easy to scan with readable type, clear labels, and concise explanations. Use text labels with color; do not make color carry meaning by itself. Match brand capitalization to the name the user provides. Follow the latest explicit design direction when it conflicts with an earlier visual choice. Keep layouts responsive and controls accessible. Avoid extra gradients, motion, decoration, and dependencies unless they support the requested design.
 - Use ASD-STE100 as the writing guide for all project-authored files. See [the writing skill](skills/writing/SKILL.md).
 - Do not use subagent-driven implementation by default. Use it only when the user asks for it or a task requirement or applicable instruction makes delegation necessary.
 
