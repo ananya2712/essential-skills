@@ -14,6 +14,7 @@ For a full-stack project, start with `skills/full-stack-project/SKILL.md`. It li
 | --- | --- |
 | `AGENTS.md` | Project defaults, user decisions, and skill routing |
 | `skills/full-stack-project/SKILL.md` | Design, implementation, verification, and project handoff |
+| `skills/full-stack-project/references/case-study-discovery-questions.md` | Questions to clarify a case study before design and implementation |
 | `skills/backend/SKILL.md` | Flask APIs, PostgreSQL, SQLAlchemy, Alembic, and backend checks |
 | `skills/frontend/SKILL.md` | Next.js, React, TypeScript, Tailwind CSS, and reusable UI |
 | `skills/documentation/SKILL.md` | Clear file-by-file progress records, code and architecture impact, decision rationale and alternatives, production and scaling implications, demo guides, diagrams, handoff, and HTML code walkthroughs |

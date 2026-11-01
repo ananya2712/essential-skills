@@ -19,7 +19,7 @@ Load only the focused skills that apply to the current task. For full-stack impl
 
 ## Workflow
 
-1. Inspect the repository and current stack. Learn the users, problem, inputs, outputs, constraints, and features that must wait. Read affected code. Trace its callers, data flow, configuration, and UI. Check for broken behavior, data loss, and data exposure.
+1. When the user presents a case study, use [the case-study discovery questions](references/case-study-discovery-questions.md) to clarify the problem and the smallest useful flow. Ask one question at a time. Select only questions that can change the scope or design. Then inspect the repository and current stack. Read affected code. Trace its callers, data flow, configuration, and UI. Check for broken behavior, data loss, and data exposure.
 2. Discuss the architecture, API, data model, frontend flow, reusable UI foundation, local run method, documentation, production handoff, and test scope. For each durable design decision, explain why it fits the approved requirements, why a reasonable alternative was not selected, which code and architecture parts it affects, and how the choice will behave in production and scale. Mark unapproved choices as recommendations.
 3. Present the proposed design in a concise summary. Include scope, exclusions, user flow, architecture, API, data, frontend, UI, local run, documentation, tests, and open questions.
 4. Get user approval before writing application code, creating project scaffolding, or installing dependencies. If the user changes the design, revise the summary and get approval again.
