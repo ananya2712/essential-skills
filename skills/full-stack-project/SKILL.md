@@ -20,7 +20,7 @@ Load only the focused skills that apply to the current task. For full-stack impl
 ## Workflow
 
 1. Inspect the repository and current stack. Learn the users, problem, inputs, outputs, constraints, and features that must wait. Read affected code. Trace its callers, data flow, configuration, and UI. Check for broken behavior, data loss, and data exposure.
-2. Discuss the architecture, API, data model, frontend flow, reusable UI foundation, local run method, documentation, production handoff, and test scope. Explain important trade-offs. Mark unapproved choices as recommendations.
+2. Discuss the architecture, API, data model, frontend flow, reusable UI foundation, local run method, documentation, production handoff, and test scope. For each durable design decision, explain why it fits the approved requirements, why a reasonable alternative was not selected, and how the choice will behave in production and scale. Mark unapproved choices as recommendations.
 3. Present the proposed design in a concise summary. Include scope, exclusions, user flow, architecture, API, data, frontend, UI, local run, documentation, tests, and open questions.
 4. Get user approval before writing application code, creating project scaffolding, or installing dependencies. If the user changes the design, revise the summary and get approval again.
 5. After approval, create the progress and decision records, the initial demo guide, and the initial architecture diagrams. Follow the documentation skill.

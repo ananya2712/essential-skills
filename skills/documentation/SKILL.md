@@ -33,7 +33,15 @@ Use these structures:
 
 ```markdown
 # Decision Log
-| Date | Decision | Context and options | Reason | Trade-off / consequence |
+## [Decision name]
+- Date:
+- Decision:
+- Why this decision fits the approved requirements:
+- Alternative considered:
+- Why the alternative was not selected:
+- Production fit and limits:
+- Scaling path and the condition that would justify it:
+- Trade-offs:
 ```
 
 ```markdown
@@ -49,7 +57,7 @@ Use these structures:
 
 Update `BUILD_PROGRESS.md` at each implementation milestone and before a pause. Add one chronological row for each file created, changed, or removed in that step. State what changed, why, and what evidence you checked. Do not rewrite history.
 
-Update `DECISION_LOG.md` when the user approves a durable choice or when an architecture or scope decision changes. Keep file-level implementation details in `BUILD_PROGRESS.md`. Link progress rows to relevant decisions.
+Record each durable design decision in `DECISION_LOG.md` when the user approves it or when the architecture or scope changes. For every decision, explain why it fits the approved requirements, which reasonable alternative you considered and why you did not select it, and how the choice behaves in production. State the scaling path and the observable condition that would justify it. Separate verified facts from recommendations. Do not invent traffic targets, performance limits, or reliability guarantees. Keep file-level implementation details in `BUILD_PROGRESS.md`. Link progress rows to relevant decisions.
 
 Start `DEMO_GUIDE.md` with the intended demo flow. Update it after each milestone and before a pause. Keep it current until all approved requirements are complete. Explain every project-owned file created or changed and how it supports or appears in the demo. Include setup commands, demo actions, expected results, limitations, and supporting files that are not visible in the interface. Organize the guide around demo steps. Do not copy source code or turn the guide into a work log. Verify it against the final implementation before marking it complete.
 
