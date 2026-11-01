@@ -28,7 +28,11 @@ Use these structures:
 - Blockers:
 ## Milestones
 ## File-by-file implementation record
-| Date / step | File | Change or decision | Reason | Status / evidence |
+### [Milestone name]
+**User-visible result:** [What a user can now do or understand.]
+**Architecture impact:** [Which boundary, dependency, or data flow changed.]
+
+| File | Role in the flow | Change and reason | Connections or impact | Evidence / status | Decision |
 ```
 
 ```markdown
@@ -39,6 +43,7 @@ Use these structures:
 - Why this decision fits the approved requirements:
 - Alternative considered:
 - Why the alternative was not selected:
+- Code and architecture affected: [Modules, routes, components, API contracts, data models, migrations, services, or diagrams. Explain how each is affected.]
 - Production fit and limits:
 - Scaling path and the condition that would justify it:
 - Trade-offs:
@@ -51,15 +56,15 @@ Use these structures:
 ## Demo flow
 | Step | Action to show | Expected result | Files used |
 ## File-by-file implementation and use
-| File | What it implements | How it supports or appears in the demo |
+| File | Responsibility | Place in the user flow | Related files or dependencies | What to show in the demo |
 ## Limits and follow-up work
 ```
 
-Update `BUILD_PROGRESS.md` at each implementation milestone and before a pause. Add one chronological row for each file created, changed, or removed in that step. State what changed, why, and what evidence you checked. Do not rewrite history.
+Update `BUILD_PROGRESS.md` at each implementation milestone and before a pause. Start each milestone with the user-visible result and architecture impact. Add one chronological row for each file created, changed, or removed. For each file, explain its responsibility, what changed, why it changed, and how it connects to other files or the user flow. Record evidence or mark it as unchecked. Link the entry to a design decision when one applies. Use direct language and define technical terms when they first appear. Do not use a file path as the full explanation. Do not rewrite history.
 
-Record each durable design decision in `DECISION_LOG.md` when the user approves it or when the architecture or scope changes. For every decision, explain why it fits the approved requirements, which reasonable alternative you considered and why you did not select it, and how the choice behaves in production. State the scaling path and the observable condition that would justify it. Separate verified facts from recommendations. Do not invent traffic targets, performance limits, or reliability guarantees. Keep file-level implementation details in `BUILD_PROGRESS.md`. Link progress rows to relevant decisions.
+Record each durable design decision in `DECISION_LOG.md` when the user approves it or when the architecture or scope changes. For every decision, explain why it fits the approved requirements, which reasonable alternative you considered and why you did not select it, which code and architecture parts it affects, and how the choice behaves in production. Name affected modules, routes, components, API contracts, data models, migrations, services, or diagrams when they apply. Explain the relationship; do not only list paths. State the scaling path and the observable condition that would justify it. Separate verified facts from recommendations. Do not invent traffic targets, performance limits, or reliability guarantees. Keep implementation history in `BUILD_PROGRESS.md`. Link progress entries to relevant decisions.
 
-Start `DEMO_GUIDE.md` with the intended demo flow. Update it after each milestone and before a pause. Keep it current until all approved requirements are complete. Explain every project-owned file created or changed and how it supports or appears in the demo. Include setup commands, demo actions, expected results, limitations, and supporting files that are not visible in the interface. Organize the guide around demo steps. Do not copy source code or turn the guide into a work log. Verify it against the final implementation before marking it complete.
+Start `DEMO_GUIDE.md` with the intended demo flow. Update it after each milestone and before a pause. Keep it current until all approved requirements are complete. Explain every project-owned file created or changed. State each file's responsibility, where it fits in the user flow, how it connects to related files, and what the demo user can observe because of it. Include setup commands, demo actions, expected results, limitations, and supporting files that are not visible in the interface. Organize the guide around demo steps. Use plain language and define technical terms. Do not copy source code or turn the guide into a work log. Verify it against the final implementation before marking it complete.
 
 ## Architecture files
 
@@ -70,7 +75,7 @@ Use Mermaid source unless the project has an established diagram format. Create:
 - `docs/architecture/module-map.mmd` for the frontend, backend modules, services, and data stores when those boundaries help maintain the code.
 - `docs/architecture/data-flow.mmd` for the main user flow through input, validation, business logic, persistence, and response. Include important external calls and failure paths.
 
-Draft diagrams from the approved design. Update them when implementation changes. Before completion, compare them with the routes, service modules, database models, and frontend flow. State any diagram that you could not check. Do not add a renderer dependency only to export an image unless the user needs that format.
+Draft diagrams from the approved design. Show the relevant code modules and dependency direction. Add source paths to module descriptions or labels when the paths are verified. Update diagrams when implementation changes. Before completion, compare them with the routes, service modules, database models, and frontend flow. State any diagram that you could not check. Do not add a renderer dependency only to export an image unless the user needs that format.
 
 ## Production-readiness handoff
 
