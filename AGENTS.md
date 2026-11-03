@@ -20,7 +20,7 @@ Load configuration from environment variables. Keep placeholder values in `.env.
 
 - Use Docker Compose for local runs.
 - Keep the first release useful and within the scope the user approves.
-- Use [Closr CRM Analytics Dashboard](https://dribbble.com/shots/27250115-CRM-Analytics-Dashboard-Contacts-Deals-Activity-Closr) as the primary UI design reference for the lead dashboard. Follow its clear hierarchy: important summary information first, supporting views next, and a readable detail table below. Use separated surfaces, compact spacing, visible filters, and restrained purple accents. Keep IBM Plex Sans unless the user selects another font. Adapt the reference to the app's real data and workflows; do not add unsupported metrics, charts, or activity feeds only to match the image.
+- Use [Closr CRM Analytics Dashboard](https://dribbble.com/shots/27250115-CRM-Analytics-Dashboard-Contacts-Deals-Activity-Closr) as the primary layout reference for the lead dashboard. Put important summary information first, supporting views next, and a readable detail table below. Use a neutral canvas and separated surfaces. Use deep navy for navigation and primary actions, blue for information, emerald for success, amber for caution, and coral for errors. Keep spacing compact, filters visible, and IBM Plex Sans as the font unless the user selects another. Show only data and actions the app supports.
 - Use ASD-STE100 as the writing guide for all project-authored files. See [the writing skill](skills/writing/SKILL.md).
 - Do not use subagent-driven implementation by default. Use it only when the user asks for it or a task requirement or applicable instruction makes delegation necessary.
 

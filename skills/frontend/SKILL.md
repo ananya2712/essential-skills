@@ -37,7 +37,7 @@ Give shared components focused responsibilities, typed props, and typed callback
 
 Add design tokens after the user accepts a visual direction. Use semantic tokens for text, surfaces, fills, borders, and accents. Do not copy another site's palette or typography unless the user selects it.
 
-For the lead dashboard, use the [Closr CRM Analytics Dashboard](https://dribbble.com/shots/27250115-CRM-Analytics-Dashboard-Contacts-Deals-Activity-Closr) selected in `AGENTS.md` as the primary visual reference. Carry its information hierarchy, separated panels, compact table, and restrained purple accents into the working app. Show only data and actions the app implements. Keep labels, focus states, contrast, and responsive layouts clear.
+For the lead dashboard, use the [Closr CRM Analytics Dashboard](https://dribbble.com/shots/27250115-CRM-Analytics-Dashboard-Contacts-Deals-Activity-Closr) selected in `AGENTS.md` for layout and information hierarchy. Use the approved neutral, multi-color palette for the working app. Apply color by purpose, with text labels for status. Show only data and actions the app implements. Keep the table, focus states, contrast, and responsive layouts clear.
 
 ## Visual direction
 
