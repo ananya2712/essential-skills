@@ -21,6 +21,10 @@ Update `DECISION_LOG.md` when the user approves a durable choice or when an arch
 
 Start `DEMO_GUIDE.md` with the intended user flow. Keep it current. Give setup commands, actions, expected results, recovery steps, and limits. Link relevant files to each step, including files the user cannot see. Verify the guide against the final app.
 
+Create `docs/ARCHITECTURE_AND_DESIGN.md` after the approved application flow is implemented. Use a project architecture prompt when one is available. Update the guide in the same change whenever completed code alters a documented API, workflow, business rule, data model, integration, UI state, or deployment behavior. Check affected claims against code before calling the code change finished. Remove stale claims and preserve accurate sections. Refresh verification results only after rerunning the relevant checks. If the code change does not affect the guide, leave it as it is.
+
+When a project has `docs/DIAGRAMS.md`, update affected diagrams with completed code changes to flows, dependencies, stored entities, or rules. Verify each arrow and label against code. Follow the diagram format the user requested for that document.
+
 ## Evidence, failures, and open policies
 
 Distinguish implemented behavior, observed verification, assumptions, and proposed work. For each verification claim, record the date, command or manual action, environment, input source, expected result, and observed result. Label live, fixture, simulated, and recorded provider data. State whether a check passed, failed, was blocked, or was not run. Static inspection and builds do not prove runtime behavior. Link to existing evidence where useful; do not create new records or store sensitive payloads only to support a claim.
@@ -31,7 +35,7 @@ For freshness claims, state the source timestamp, retrieval time when known, and
 
 ## Architecture visuals
 
-Create visual diagrams in `docs/architecture/`. Use SVG, PNG, or another viewable image format. Keep an editable source for each diagram. Do not use Mermaid. Choose the smallest set of views that explains the implemented system:
+Create visual diagrams in `docs/architecture/`. Use SVG, PNG, or another viewable image format. Keep an editable source for each diagram. Do not use Mermaid for these visuals unless the user explicitly requests it. Choose the smallest set of views that explains the implemented system:
 
 - **System boundary:** Show the user, frontend, backend, data stores, external sources, and trust boundaries. Mark simulated sources as simulated.
 - **Main data flow:** Follow one complete user action from input to response. Show validation, business rules, external calls, reads, writes, and visible results. Label each arrow with the data or request it carries. Number steps when order matters.
