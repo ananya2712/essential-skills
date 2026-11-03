@@ -1,6 +1,6 @@
 ---
 name: project-documentation
-description: Use when creating or updating project progress records, decision logs, demo guides, architecture diagrams, or production-readiness documents.
+description: Use when creating or updating project records, visual architecture and data-flow diagrams, demo guides, or production handoff documents.
 ---
 
 # Documentation Skill
@@ -15,69 +15,36 @@ Create these files after design approval and before implementation begins:
 - `docs/DECISION_LOG.md` records durable, cross-cutting decisions and their trade-offs.
 - `docs/DEMO_GUIDE.md` explains the implemented project from a demo user's point of view.
 
-Use these structures:
+Update `BUILD_PROGRESS.md` at each milestone and before a pause. Record status, changed files, reasons, and evidence. Keep the history chronological.
 
-```markdown
-# Build Progress
-## Goal
-## Approved scope
-## Current status
-- Completed:
-- In progress:
-- Next:
-- Blockers:
-## Milestones
-## File-by-file implementation record
-### [Milestone name]
-**User-visible result:** [What a user can now do or understand.]
-**Architecture impact:** [Which boundary, dependency, or data flow changed.]
+Update `DECISION_LOG.md` when the user approves a durable choice or when an architecture or scope decision changes. Keep file-level implementation details in `BUILD_PROGRESS.md`. Link progress rows to relevant decisions.
 
-| File | Role in the flow | Change and reason | Connections or impact | Evidence / status | Decision |
-```
+Start `DEMO_GUIDE.md` with the intended user flow. Keep it current. Give setup commands, actions, expected results, recovery steps, and limits. Link relevant files to each step, including files the user cannot see. Verify the guide against the final app.
 
-```markdown
-# Decision Log
-## [Decision name]
-- Date:
-- Decision:
-- Why this decision fits the approved requirements:
-- Alternative considered:
-- Why the alternative was not selected:
-- Code and architecture affected: [Modules, routes, components, API contracts, data models, migrations, services, or diagrams. Explain how each is affected.]
-- Production fit and limits:
-- Scaling path and the condition that would justify it:
-- Trade-offs:
-```
+## Evidence, failures, and open policies
 
-```markdown
-# Demo Guide
-## Demo overview
-## Setup
-## Demo flow
-| Step | Action to show | Expected result | Files used |
-## File-by-file implementation and use
-| File | Responsibility | Place in the user flow | Related files or dependencies | What to show in the demo |
-## Limits and follow-up work
-```
+Distinguish implemented behavior, observed verification, assumptions, and proposed work. For each verification claim, record the date, command or manual action, environment, input source, expected result, and observed result. Label live, fixture, simulated, and recorded provider data. State whether a check passed, failed, was blocked, or was not run. Static inspection and builds do not prove runtime behavior. Link to existing evidence where useful; do not create new records or store sensitive payloads only to support a claim.
 
-Update `BUILD_PROGRESS.md` at each implementation milestone and before a pause. Start each milestone with the user-visible result and architecture impact. Add one chronological row for each file created, changed, or removed. For each file, explain its responsibility, what changed, why it changed, and how it connects to other files or the user flow. Record evidence or mark it as unchecked. Link the entry to a design decision when one applies. Use direct language and define technical terms when they first appear. Do not use a file path as the full explanation. Do not rewrite history.
+In the demo guide and relevant data-flow diagrams, explain applicable partial failures and recovery paths. State what remains saved, what the user sees, how retry works, and how duplicate effects are prevented. Record unresolved business policies in the decision log as pending, with their impact and the decision needed. Do not present a proposed default as an approved policy.
 
-Record each durable design decision in `DECISION_LOG.md` when the user approves it or when the architecture or scope changes. For every decision, explain why it fits the approved requirements, which reasonable alternative you considered and why you did not select it, which code and architecture parts it affects, and how the choice behaves in production. Name affected modules, routes, components, API contracts, data models, migrations, services, or diagrams when they apply. Explain the relationship; do not only list paths. State the scaling path and the observable condition that would justify it. Separate verified facts from recommendations. Do not invent traffic targets, performance limits, or reliability guarantees. Keep implementation history in `BUILD_PROGRESS.md`. Link progress entries to relevant decisions.
+For freshness claims, state the source timestamp, retrieval time when known, and freshness rule. For performance results, record the measured operation, data volume, concurrency, environment, cache state when relevant, measurement method, and run count. Distinguish measured results from targets and estimates. Do not generalize a local or simulated result into a production guarantee.
 
-Start `DEMO_GUIDE.md` with the intended demo flow. Update it after each milestone and before a pause. Keep it current until all approved requirements are complete. Explain every project-owned file created or changed. State each file's responsibility, where it fits in the user flow, how it connects to related files, and what the demo user can observe because of it. Include setup commands, demo actions, expected results, limitations, and supporting files that are not visible in the interface. Organize the guide around demo steps. Use plain language and define technical terms. Do not copy source code or turn the guide into a work log. Verify it against the final implementation before marking it complete.
+## Architecture visuals
 
-## Architecture files
+Create visual diagrams in `docs/architecture/`. Use SVG, PNG, or another viewable image format. Keep an editable source for each diagram. Do not use Mermaid. Choose the smallest set of views that explains the implemented system:
 
-Use Mermaid source unless the project has an established diagram format. Create:
+- **System boundary:** Show the user, frontend, backend, data stores, external sources, and trust boundaries. Mark simulated sources as simulated.
+- **Main data flow:** Follow one complete user action from input to response. Show validation, business rules, external calls, reads, writes, and visible results. Label each arrow with the data or request it carries. Number steps when order matters.
+- **Failure and recovery:** Show where a call can fail, what data remains saved, what the user sees, and where a retry resumes. Put this in the main flow or a separate view if the main diagram becomes crowded.
+- **Additional views:** Add a module or data-model view only when ownership, dependencies, identity, or stored fields need a separate explanation.
 
-- `docs/architecture/README.md` for system boundaries, module ownership, dependency direction, and diagram maintenance.
-- `docs/architecture/system-context.mmd` for users, the application, and external systems.
-- `docs/architecture/module-map.mmd` for the frontend, backend modules, services, and data stores when those boundaries help maintain the code.
-- `docs/architecture/data-flow.mmd` for the main user flow through input, validation, business logic, persistence, and response. Include important external calls and failure paths.
+Use consistent names for records and modules. Mark the source of truth for key fields. Distinguish stored, derived, and external data. Show synchronous and background steps differently when both exist. Mark current behavior and proposed production changes in separate diagrams or clearly separate panels. Do not draw an unimplemented component as current behavior.
 
-Draft diagrams from the approved design. Show the relevant code modules and dependency direction. Add source paths to module descriptions or labels when the paths are verified. Update diagrams when implementation changes. Before completion, compare them with the routes, service modules, database models, and frontend flow. State any diagram that you could not check. Do not add a renderer dependency only to export an image unless the user needs that format.
+Write `docs/architecture/README.md` as a short guide. For each diagram, give its purpose, image link, editable source, key files or API routes, and a brief text path through the flow. Define any symbols and labels that are not clear from the image. Record important assumptions and unresolved decisions near the affected diagram. Link to the decision log and production handoff instead of repeating them.
 
-## Production-readiness handoff
+Draft from the approved design. Update diagrams when a route, data store, provider, or business flow changes. Before handoff, trace each arrow against the UI, routes, services, models, and provider adapters. Check the saved state and failure path against observed behavior. Open or render every image. Inspect text size, arrow direction, contrast, and legibility at normal reading size. Record what was checked and what remains unverified.
+
+## Production handoff
 
 At project completion, create `docs/operations/production-readiness.md`. Separate observed facts, assumptions, recommendations, and remaining work. Include:
 
@@ -90,8 +57,6 @@ At project completion, create `docs/operations/production-readiness.md`. Separat
 - Security and secret-management gaps.
 - Known limits, open decisions, and prioritized work before launch.
 
+Also create `docs/operations/production-extensibility.md`. Map likely additions to the current module or interface that would change. Cover new data sources, business rules, UI flows, and higher data volume only when relevant. For each addition, state the trigger, proposed boundary, data or API change, migration and compatibility needs, and verification needed. Name what is already extensible and what needs refactoring. Keep proposals separate from implemented extension points. Do not add speculative infrastructure.
+
 Do not invent load targets, SLOs, recovery objectives, or guarantees. Do not claim production readiness from code review alone. Do not deploy infrastructure or expand approved scope to address a recommendation. Record that work as a recommendation until the user approves it.
-
-## HTML code walkthrough
-
-When the user asks for a detailed website that explains an application, use [the HTML code walkthrough prompt](references/html-code-walkthrough.md) as the deliverable specification. Inspect the entire repository before writing. Save one self-contained `index.html` in the requested output location. If the user does not specify a location, place it under `docs/code-walkthrough/` when that folder fits the repository. Do not change application code. Keep claims tied to source evidence and label unknowns. Do not include secrets or sensitive values.

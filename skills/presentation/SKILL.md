@@ -7,28 +7,29 @@ description: Use when creating, editing, or reviewing the final PowerPoint prese
 
 Create the final project deck after implementation, agreed tests, and final verification are complete. Read `AGENTS.md` and the documentation skill. Use the relevant presentation authoring skill available in the session.
 
-## Template
+## Format
 
-Use the [Slidesgo Minimalist Business Slides template](https://slidesgo.com/theme/minimalist-business-slides#position-1&rs=home-popular). Use the actual template when available. Follow its 16:9 layout and visual system. Choose a color variant that fits the approved project design. Preserve required template elements. Check the current license terms. If the free version requires attribution, keep its credit slide. If you cannot access the template, report the blocker before choosing another template.
+Use a clean 16:9 layout that fits the approved app style. Match the structure of the project's HTML code walkthrough when it exists. Use its section and subheadings as a guide, then shorten them for slides. Use diagrams, code paths, record shapes, and one worked example to carry technical detail. Keep slide text minimal. Put commands, evidence conditions, and deeper explanation in speaker notes. Keep diagrams readable and editable when practical. Do not use Mermaid.
 
 ## Content
 
-Create seven content slides in this order. Adapt examples to the approved project. Do not imply that the project has a feature, provider, or result that it does not have.
+Follow the HTML walkthrough's order where the content applies:
 
-| Slide | Content |
-| --- | --- |
-| 1. Problem and user | Name the user, their current difficulty, and the decision the app helps them make. For a lead dashboard, explain how a sales representative decides which businesses to contact first and why. |
-| 2. MVP scope | Show the approved core flow, such as import → enrich → score → rank → inspect. State the key exclusions and why the MVP focused on this flow. |
-| 3. Architecture and data flow | Show a simple frontend → backend → database diagram and any external provider. Mark where validation, business logic, and persistence happen. Match the implemented system. |
-| 4. Live demo | Give a short action checklist for the core flow. Do not use screenshots as a substitute for the demo steps. Include one missing-data or failure case. |
-| 5. Key implementation decisions | Explain three important choices and their trade-offs. For a lead scoring app, cover the stack and UI approach, scoring method, and external API handling. Name one reasonable alternative for each. |
-| 6. Verification and limitations | Report checks that were actually run and their results. Identify fixture data, known gaps, and anything not verified. |
-| 7. Production next steps | Rank the three most important next steps. Give the evidence or condition that would trigger each one. Do not invent production targets or claim unverified readiness. |
+1. Project overview and requirements: user, problem, core flow, and key functional and quality needs.
+2. Directory structure: key entry points and what owns each part.
+3. Architecture: system boundaries, data sources, module calls, and persisted fields. Trace data through the diagram.
+4. API walkthrough: one representative request, response, and failure path. Put the full inventory in notes or a reference slide only if useful.
+5. Where data lives: input, derived values, saved records, and freshness.
+6. Rules and business logic: deterministic inputs, one worked example, and limits.
+7. Key decisions: important choices and trade-offs.
+8. Production translation and extensibility: current limits, proposed changes, and the evidence that would trigger them.
+9. Verification and limitations: observed checks, conditions, results, and open gaps.
+10. Short demo guide: action sequence and one implemented recovery case. Label any simulation.
 
-Use speaker notes for the explanation behind each slide. Keep slide text brief and readable. Use project facts, observed check results, and approved decisions. Follow the writing skill for all slide text and notes. Keep slide text editable when the template allows it.
+Combine or split topics to keep each slide legible. Use project facts and the writing skill. Distinguish implemented behavior, recorded verification, and proposed production work. If a recovery path is absent, state the gap and show it as proposed work.
 
 ## Review and delivery
 
-Save the final deck as `docs/PROJECT_DEMO.pptx`. Record the deck in `docs/BUILD_PROGRESS.md` and `docs/DEMO_GUIDE.md`. Record the template choice in `docs/DECISION_LOG.md`.
+Save the final deck as `docs/PROJECT_DEMO.pptx`. Record it in `docs/BUILD_PROGRESS.md` and `docs/DEMO_GUIDE.md`. Record a durable format choice in `docs/DECISION_LOG.md`.
 
-Render and inspect every slide. Check content coverage, template match, readability, text fit, diagram accuracy, editability, and required credits. Compare slides with the source template. Do not report a check that you did not run. Do not deliver temporary files unless the user asks for them.
+Render and inspect every slide. Check the match with the HTML guide, readable text, diagram accuracy, and factual claims. Do not report a check that you did not run. Do not deliver temporary files unless the user asks for them.

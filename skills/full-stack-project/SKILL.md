@@ -21,15 +21,28 @@ Load only the focused skills that apply to the current task. For full-stack impl
 
 1. When the user presents a case study, use [the case-study discovery questions](references/case-study-discovery-questions.md) to clarify the problem and the smallest useful flow. Ask one question at a time. Select only questions that can change the scope or design. Then inspect the repository and current stack. Read affected code. Trace its callers, data flow, configuration, and UI. Check for broken behavior, data loss, and data exposure.
 2. Discuss the architecture, API, data model, frontend flow, reusable UI foundation, local run method, documentation, production handoff, and test scope. For each durable design decision, explain why it fits the approved requirements, why a reasonable alternative was not selected, which code and architecture parts it affects, and how the choice will behave in production and scale. Mark unapproved choices as recommendations.
-3. Present the proposed design in a concise summary. Include scope, exclusions, user flow, architecture, API, data, frontend, UI, local run, documentation, tests, and open questions.
+3. Present the proposed design in a concise summary. Include scope, exclusions, user flow, architecture, API, data, frontend, UI, local run, documentation, tests, and open questions. Use the design checklist below and define observable acceptance criteria before implementation.
 4. Get user approval before writing application code, creating project scaffolding, or installing dependencies. If the user changes the design, revise the summary and get approval again.
-5. After approval, create the progress and decision records, the initial demo guide, and the initial architecture diagrams. Follow the documentation skill.
+5. After approval, create the progress and decision records, the initial demo guide, and the initial architecture visuals. Follow the documentation skill.
 6. Write a short milestone plan. Build the smallest complete user flow first. Reuse project code, platform features, and installed dependencies. Do not add options, abstractions, or dependencies for unapproved future needs.
 7. At each milestone, update the project records and demo guide. State the user-visible result, architecture impact, file responsibilities, and connections between changed files. Review connected callers. Preserve required validation and error handling. Report progress in plain language and link implementation details to the decisions that caused them.
 8. Do not write or run automated application tests until all approved functionality is complete. Do not use test-driven development. Then run only the agreed test types from `AGENTS.md`. Use a separate test database. Do not use production data or live provider accounts.
-9. Verify the agreed behavior. Check that Docker Compose starts the local app, the main user flow works, and saved data remains after restart. Compare architecture diagrams with the implementation. Inspect the affected code path, not only the diff. Report commands, observed results, unchecked items, and known risks.
-10. Verify the demo guide against the final implementation. Create the production-readiness handoff. Mark the demo guide complete only when all approved requirements are complete and the guide matches the observed project.
-11. After implementation and final verification, create `docs/PROJECT_DEMO.pptx` with the presentation skill. Use the approved template and seven-slide sequence. Use observed project evidence. Add speaker notes. Inspect every slide and verify the template terms and credits. Record the deck in the project records and demo guide.
+9. Verify the agreed behavior. Check that Docker Compose starts the local app, the main user flow works, and saved data remains after restart. Compare architecture visuals with the implementation. Inspect the affected code path, not only the diff. Report commands, observed results, unchecked items, and known risks.
+10. Verify the demo guide against the final implementation. Create the production readiness and extensibility handoff. Mark the demo guide complete only when all approved requirements are complete and the guide matches the observed project.
+11. After implementation and final verification, create `docs/PROJECT_DEMO.pptx` with the presentation skill. Structure it from the HTML walkthrough when available. Use observed project evidence. Add speaker notes. Inspect every slide. Record the deck in the project records and demo guide.
+
+## Design checklist and acceptance criteria
+
+Resolve these points for the approved flow. Mark items that do not apply. Keep unresolved business policies visible and get a decision before implementing behavior that depends on them.
+
+- Record identity: define how the app recognizes the same record across imports, edits, and retries. State how it handles duplicates and conflicting values.
+- Source of truth: define which source controls each important value and when user edits take precedence.
+- Missing or stale data: distinguish unknown, empty, zero, and outdated values. Define freshness limits and the action available when data is stale.
+- Partial failure: define what succeeds, what is saved, and what the user sees when only part of an operation completes.
+- Retry behavior: define what can be retried, how duplicate effects are prevented, and when retry attempts stop.
+- Time-dependent rules: define the relevant timestamp, time zone, cutoff, and recalculation trigger when time can change a result.
+
+For each complete user flow, state the starting data, user actions, visible result, and required saved state. Include applicable missing-data, failure, retry, and reload cases. Make each criterion observable, such as a visible status or a saved value after restart. Define performance limits only when required and state the measurement conditions. These criteria guide later verification; do not write or run automated application tests before approved functionality is complete.
 
 ## Small and complete changes
 

@@ -25,6 +25,15 @@ Use [Humanizer](https://github.com/blader/humanizer) as a supplementary review w
 
 Edit prose only. Preserve code, data, frontmatter, and link targets. Do not optimize text to pass AI detectors. Do not invent names, numbers, dates, quotes, or claims. If a required fact is missing, mark it as unknown or ask for it.
 
+## Evidence and recommendation language
+
+- Match claims to evidence. Use “implemented” for behavior present in code and “verified” only for an observed check. Name the check and its limits. Use “proposed” for work that remains unapproved or unbuilt.
+- Keep unknown, unavailable, empty, zero, and failed distinct. Do not call a record verified because one field was checked. Name the checked fields and source when that distinction affects the user.
+- State when data was obtained or last updated when freshness matters. Use “current” or “fresh” only with a stated freshness rule and supporting timestamp. Mark an unknown timestamp as unknown.
+- Label sample, fixture, simulated, and recorded results where readers encounter them. Do not describe a simulated provider response as a live integration result.
+- Describe rule-based scores, rankings, and recommendations by their inputs, criteria, and limits. Use “highest under these rules” rather than an unsupported claim such as “best.” Do not imply a prediction, probability, or independent validation unless evidence supports it. Label generated advice and keep it distinct from calculated results.
+- State the failure and available recovery action in user-facing errors. Do not promise that a retry will succeed or that work was saved unless that state is confirmed.
+
 ## Comments and technical writing
 
 Make comments explain why the code needs a non-obvious choice. Do not use comments to repeat what the code already says. Keep technical and reference prose neutral and direct. Preserve exact commands, paths, and identifiers when editing surrounding prose.

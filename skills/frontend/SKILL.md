@@ -59,6 +59,21 @@ Use [Tabler](https://github.com/tabler/tabler) as a reference for dashboard and 
 
 Use [Taste Skill](https://github.com/Leonxlnx/taste-skill), skill name `design-taste-frontend`, for a new interface or a major visual redesign. Use its app-screen guidance for dashboards and other working interfaces. Review the result in a browser at desktop, tablet, and phone widths. Fix the main visible issues. Do not run its full workflow for a small component change. Keep the approved product style and task scope. Do not add motion, assets, or dependencies only to follow the skill. When you use third-party images, check the license and include the required credit.
 
+## Asynchronous data and drafts
+
+- Associate each response with the request and record that produced it. Ignore outdated responses when the user changes a filter, opens another record, or starts a newer request. Cancel requests when supported, but also guard against responses that arrive after cancellation.
+- Distinguish initial loading, refresh, partial success, empty results, and failure. Keep useful data visible during refresh when appropriate. Show stale data as stale. Prevent duplicate submissions while a mutation is pending.
+- Preserve entered values and unsaved edits after validation or network failures. Do not replace a draft with a late response. Reset it after confirmed success or an explicit discard. If navigation can discard work, provide a clear recovery or discard choice. Add persistent browser storage only when approved requirements and data sensitivity permit it.
+- After a mutation, reconcile the displayed record, totals, and list order with the saved result. Keep errors near the affected action and offer the supported retry action.
+
+## Dialog focus and dismissal
+
+Use a named dialog with an appropriate initial focus target. For a modal, keep keyboard focus inside it and make background content unavailable to interaction. Support Escape and a visible close control when dismissal is allowed. Define dismissal during pending work and for unsaved drafts. Restore focus to the opening control, or a logical fallback if that control no longer exists. Announce validation and submission errors without losing the user's place. Check opening, tab order, dismissal, and focus restoration with the keyboard.
+
+## Collection navigation
+
+Choose a deliberate collection strategy from expected data volume and user tasks. Use client pagination only when the full result set is bounded and safe to load. Use server pagination for larger sets. Choose page numbers or cursors to fit navigation and data changes. Infinite scrolling needs an approved browsing use case. Keep filtering and sorting consistent across the full collection. Use stable ordering with a tie-breaker. Reset or correct the current page when filters, page size, or deletions make it invalid. Show loading, empty, and failed-page states. Show totals only when known. Preserve navigation state when returning from a record when the flow needs it.
+
 ## Interface quality
 
 Apply these rules when they fit the approved design:
