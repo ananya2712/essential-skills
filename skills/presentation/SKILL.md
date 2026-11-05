@@ -25,12 +25,13 @@ Before authoring:
 1. Read `AGENTS.md`.
 2. Read the project documentation and writing skills.
 3. Use the relevant presentation authoring skill available in the session.
-4. Inspect the implemented routes, schemas, database models, migrations, configuration, and important business logic.
+4. Inspect the implemented routes, schemas, database models, database setup, configuration, and important business logic.
 5. Read the architecture document, decision log, demo guide, verification results, and HTML code walkthrough when available.
+6. Review the [Google Slides reference deck](https://docs.google.com/presentation/d/1RWY1xEEjRpM93radP9uHwpHtNai9NjFcjR3e8hwHaUI/edit?slide=id.p1#slide=id.p1) for topics the presentation should cover. Map relevant topics to the seven core slides or a justified appendix. Check each project-specific claim against the implementation.
 
 Treat code as evidence of implementation. Treat the decision log as evidence of recorded rationale. Verify documentation claims against the code.
 
-The HTML walkthrough supplies supporting material; it does not override the mandatory slide order below.
+The HTML walkthrough and reference deck supply supporting material. They do not override the mandatory slide order below. If either source is unavailable, report that limit. Do not infer its contents.
 
 Distinguish:
 - **Implemented:** Present in the application.
@@ -123,7 +124,7 @@ Clearly distinguish:
 Do not represent mock files as database tables. Do not show proposed history, audit, or provenance tables as implemented.
 
 **Speaker notes:**
-- Model and migration file paths.
+- Model and database setup file paths.
 - Why each entity exists.
 - Duplicate-prevention strategy.
 - Nullable fields and missing-data behavior.
@@ -267,6 +268,7 @@ Include the recorded verification summary in notes and, when useful, an appendix
 ## Visual and writing requirements
 
 - Use a clean 16:9 layout.
+- An external slide template is optional. If a Slidesgo or other template needs a login or cannot be downloaded, use native PowerPoint shapes in the approved project style. Report the skipped template. Keep the required seven-slide structure.
 - Follow the approved application style and project writing skill.
 - Use short, concrete sentences suitable for an L1/L2 technical walkthrough.
 - Use one main message per slide.
@@ -293,7 +295,7 @@ Save the final deck as `docs/PROJECT_DEMO.pptx`.
 
 Before delivery:
 - Confirm the seven required slides exist in the specified order.
-- Cross-check entities against models and migrations.
+- Cross-check entities against models and the initialized database schema when available.
 - Cross-check endpoints against actual routes and the API contract.
 - Check diagram arrows against real dependencies and data flow.
 - Check that stated alternatives and rationale are accurately attributed.

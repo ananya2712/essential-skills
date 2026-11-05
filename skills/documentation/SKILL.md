@@ -21,13 +21,19 @@ Update `DECISION_LOG.md` when the user approves a durable choice or when an arch
 
 Start `DEMO_GUIDE.md` with the intended user flow. Keep it current. Give setup commands, actions, expected results, recovery steps, and limits. Link relevant files to each step, including files the user cannot see. Verify the guide against the final app.
 
-Create `docs/ARCHITECTURE_AND_DESIGN.md` after the approved application flow is implemented. Use a project architecture prompt when one is available. Update the guide in the same change whenever completed code alters a documented API, workflow, business rule, data model, integration, UI state, or deployment behavior. Check affected claims against code before calling the code change finished. Remove stale claims and preserve accurate sections. Refresh verification results only after rerunning the relevant checks. If the code change does not affect the guide, leave it as it is.
+Create `docs/ARCHITECTURE_AND_DESIGN.md` after the approved application flow is implemented. Use `architecture/PROMPT.md` for its content. Mermaid diagrams are permitted inside this Markdown guide. Update the guide in the same change whenever completed code alters a documented API, workflow, business rule, data model, integration, UI state, or deployment behavior. Check affected claims against code before calling the code change finished. Remove stale claims and preserve accurate sections. Refresh verification results only after rerunning the relevant checks. If the code change does not affect the guide, leave it as it is.
 
-When a project has `docs/DIAGRAMS.md`, update affected diagrams with completed code changes to flows, dependencies, stored entities, or rules. Verify each arrow and label against code. Follow the diagram format the user requested for that document.
+Create `docs/DIAGRAMS.md` only when the user requests a separate diagram guide. Then use `architecture/DIAGRAMS_PROMPT.md` and update affected diagrams with completed code changes to flows, dependencies, stored entities, or rules. Verify each arrow and label against code. Follow the diagram format the user requested for that document.
 
 ## Evidence, failures, and open policies
 
 Distinguish implemented behavior, observed verification, assumptions, and proposed work. For each verification claim, record the date, command or manual action, environment, input source, expected result, and observed result. Label live, fixture, simulated, and recorded provider data. State whether a check passed, failed, was blocked, or was not run. Static inspection and builds do not prove runtime behavior. Link to existing evidence where useful; do not create new records or store sensitive payloads only to support a claim.
+
+Use this table for each verification summary. Put the date, environment, input source, and expected result in the relevant cell or a short note linked from the row. Put observed evidence in **Result**. Use **Not checked** for a skipped or blocked check and give the reason; otherwise use `—`.
+
+| Check | Command or action | Result | Not checked |
+| --- | --- | --- | --- |
+| [specific check] | [command or manual action] | [observed result] | [— or reason] |
 
 In the demo guide and relevant data-flow diagrams, explain applicable partial failures and recovery paths. State what remains saved, what the user sees, how retry works, and how duplicate effects are prevented. Record unresolved business policies in the decision log as pending, with their impact and the decision needed. Do not present a proposed default as an approved policy.
 
@@ -35,7 +41,7 @@ For freshness claims, state the source timestamp, retrieval time when known, and
 
 ## Architecture visuals
 
-Create visual diagrams in `docs/architecture/`. Use SVG, PNG, or another viewable image format. Keep an editable source for each diagram. Do not use Mermaid for these visuals unless the user explicitly requests it. Choose the smallest set of views that explains the implemented system:
+Create visual diagrams as image files in `docs/architecture/`. Use SVG, PNG, or another viewable image format. Keep an editable source for each diagram. Mermaid in `docs/ARCHITECTURE_AND_DESIGN.md` does not replace these images. Do not use Mermaid as the source for these image files unless the user explicitly requests it. Choose the smallest set of views that explains the implemented system:
 
 - **System boundary:** Show the user, frontend, backend, data stores, external sources, and trust boundaries. Mark simulated sources as simulated.
 - **Main data flow:** Follow one complete user action from input to response. Show validation, business rules, external calls, reads, writes, and visible results. Label each arrow with the data or request it carries. Number steps when order matters.
@@ -57,10 +63,10 @@ At project completion, create `docs/operations/production-readiness.md`. Separat
 - Scaling options and the evidence or thresholds that would justify them.
 - Failure modes, timeouts, retry and idempotency needs, and recovery steps.
 - Health checks, logs, metrics, alerts, and incident ownership.
-- Database backup, restore, migration, and connection-capacity needs.
+- Database backup, restore, and connection-capacity needs.
 - Security and secret-management gaps.
 - Known limits, open decisions, and prioritized work before launch.
 
-Also create `docs/operations/production-extensibility.md`. Map likely additions to the current module or interface that would change. Cover new data sources, business rules, UI flows, and higher data volume only when relevant. For each addition, state the trigger, proposed boundary, data or API change, migration and compatibility needs, and verification needed. Name what is already extensible and what needs refactoring. Keep proposals separate from implemented extension points. Do not add speculative infrastructure.
+Also create `docs/operations/production-extensibility.md`. Map likely additions to the current module or interface that would change. Cover new data sources, business rules, UI flows, and higher data volume only when relevant. For each addition, state the trigger, proposed boundary, data or API change, compatibility needs, and verification needed. Name what is already extensible and what needs refactoring. Keep proposals separate from implemented extension points. Do not add speculative infrastructure.
 
 Do not invent load targets, SLOs, recovery objectives, or guarantees. Do not claim production readiness from code review alone. Do not deploy infrastructure or expand approved scope to address a recommendation. Record that work as a recommendation until the user approves it.

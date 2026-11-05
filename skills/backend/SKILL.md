@@ -1,6 +1,6 @@
 ---
 name: flask-postgres-backend
-description: Use when planning, building, or reviewing Flask APIs, PostgreSQL data models, database migrations, or backend integration in this project.
+description: Use when planning, building, or reviewing Flask APIs, PostgreSQL data models, or backend integration in this project.
 ---
 
 # Backend Skill
@@ -26,11 +26,11 @@ During final verification, compare actual HTTP responses with `openapi.yaml` and
 
 ## Data and persistence
 
-- Use PostgreSQL, SQLAlchemy 2, and Alembic.
+- Use PostgreSQL and SQLAlchemy 2. Keep local database initialization documented and aligned with the models.
 - Model the approved main records and their relationships.
 - Add a field only when a requirement needs it. Add an index only when a query or constraint needs it.
 - Do not add enrichment history, provider payload storage, or provenance tables by default.
-- Use database constraints for important data rules. Add a migration for each schema change.
+- Use database constraints for important data rules. Do not add schema-versioning tooling for the MVP.
 - Do not add queues, caches, microservices, or deployment services until an approved requirement needs them.
 
 Define transaction boundaries around each logical write. Roll back failed writes. Use stable record identity and database uniqueness rules to prevent duplicates during retries or concurrent requests. Define how concurrent edits are detected or resolved when they can overwrite user work. Preserve saved values when a provider call fails or omits a field; apply explicit clearing only under an approved rule. Keep slow provider calls outside database write transactions where possible. For partial results, persist only validated data and the status needed by the approved recovery flow.
@@ -38,6 +38,8 @@ Define transaction boundaries around each logical write. Roll back failed writes
 ## Business rules
 
 Keep scoring, ranking, eligibility, and other business rules in service modules. For the same inputs, rule version, and effective time, return the same result. Define tie-breaking, numeric precision, thresholds, and missing-data behavior when relevant. Pass the effective time explicitly for time-dependent decisions. Keep provider or generated advice separate from authoritative rules. Let it change a business result only when the approved requirements explicitly allow that behavior.
+
+For time-dependent rules, make test fixture dates relative to the test's effective date. Record and show the recording date for demo fixtures so a viewer can explain their age. If a fixed demo date would help, propose an optional `SCORING_DATE` configuration value during design. Add it only with approval, limit it to local demos, and label the effective date in the UI and verification record. Do not use a demo date override for live production scoring.
 
 ## Configuration and security
 
@@ -50,6 +52,8 @@ Preserve validation and error handling when code moves. Handle failures so they 
 Call external providers from backend service modules. Set timeouts. Handle expected provider errors. Keep provider-specific behavior out of route handlers. Do not add request-history or provider-payload tables by default. Do not connect tests to live provider accounts.
 
 Treat provider responses as untrusted input. Validate their shape and values before use, then map them to internal schemas. Distinguish a valid empty result from unavailable data, invalid data, and a failed request. Bound request duration and retry attempts. Retry only failures that can recover, and account for rate limits. Do not repeat a request with external side effects unless duplicate effects are prevented. Preserve the user's input and useful saved results on failure. Return a safe error and the supported next action. Keep credentials and raw sensitive payloads out of errors and logs.
+
+When the app has a live source, make one manual live call through the app during final verification. Record the input class, observed response, environment, and limits as a manual check. If access or configuration prevents the call, mark it not checked and give the reason. Do not treat a direct provider call or a fixture result as proof of the app's live path.
 
 ## Tests and verification
 

@@ -1,6 +1,8 @@
 # Diagram guide prompt
 
-Inspect this codebase and create or update `docs/DIAGRAMS.md` for a Software Engineer L1/L2. Generate it after the approved application flow is implemented. Update affected diagrams whenever completed code changes a workflow, module dependency, persisted entity, integration, or business rule. Check each change against code before calling the code change finished. Keep accurate diagrams; remove stale ones. Do not modify application code.
+Use this prompt only when the user requests a separate `docs/DIAGRAMS.md`. Otherwise, put the required Mermaid diagrams in `docs/ARCHITECTURE_AND_DESIGN.md` using `architecture/PROMPT.md`, and maintain viewable image files in `docs/architecture/` using `skills/documentation/SKILL.md`.
+
+When requested, inspect this codebase and create or update `docs/DIAGRAMS.md` for a Software Engineer L1/L2. Generate it after the approved application flow is implemented. Update affected diagrams whenever completed code changes a workflow, module dependency, persisted entity, integration, or business rule. Check each change against code before calling the code change finished. Keep accurate diagrams; remove stale ones. Do not modify application code. This separate guide does not replace the image files in `docs/architecture/`.
 
 Include focused Mermaid diagrams for:
 

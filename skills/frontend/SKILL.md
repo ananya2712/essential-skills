@@ -28,38 +28,28 @@ frontend/components/ui/
   layout/
   overlays/
   README.md
-frontend/app/dev/component-gallery/page.tsx
 ```
 
 Build the smallest shared component set that the approved flow needs. Use native HTML with Tailwind for simple controls. Use an existing accessible primitive when an interaction needs keyboard or focus behavior. Do not mix primitive systems in one interaction. Do not wrap every library component.
 
-Give shared components focused responsibilities, typed props, and typed callbacks. Document their purpose, states, accessibility needs, and one example in the UI README. Use the gallery route to preview components. Keep feature data and API calls out of it. Keep the route out of production navigation and make it unavailable in production. Show normal, loading, empty, error, disabled, and long-content states when they apply. Do not add Storybook or another component tool without an approved need.
+Give shared components focused responsibilities, typed props, and typed callbacks. Document their purpose, states, accessibility needs, and one example in the UI README. For apps with two pages or fewer, a component gallery is optional. Add `frontend/app/dev/component-gallery/page.tsx` only when previewing shared states will help more than checking the real pages. Keep feature data and API calls out of the gallery. Keep it out of production navigation and make it unavailable in production. Show normal, loading, empty, error, disabled, and long-content states when they apply. Do not add Storybook or another component tool without an approved need.
 
 Add design tokens after the user accepts a visual direction. Use semantic tokens for text, surfaces, fills, borders, and accents. Do not copy another site's palette or typography unless the user selects it.
 
 For the lead dashboard, use the [Closr CRM Analytics Dashboard](https://dribbble.com/shots/27250115-CRM-Analytics-Dashboard-Contacts-Deals-Activity-Closr) selected in `AGENTS.md` for layout and information hierarchy. Use the approved neutral, multi-color palette for the working app. Apply color by purpose, with text labels for status. Show only data and actions the app implements. Keep the table, focus states, contrast, and responsive layouts clear.
 
-## Visual direction
+## Visual direction and UI review
 
-- Build on the design system or UI reference the user selects in the main app. Treat a reference as direction for the real interface, not only as a mockup or guide.
-- Use a calm neutral canvas, layered surfaces, and purposeful color to create clear visual hierarchy. Avoid stark, flat-white pages.
-- Make tables and classification categories easy to scan. Use readable type, clear labels, and concise explanations. Use text labels with color; do not make color carry meaning by itself.
-- Match brand capitalization to the name the user provides.
-- Follow the latest explicit design direction when it conflicts with an earlier visual preference.
-- Keep layouts responsive and controls accessible. Avoid extra gradients, motion, decoration, and dependencies unless they support the requested design.
+Use these local rules for visual work:
 
-## UI skill resources
+- Apply the user's selected reference to the real app. Follow the latest explicit design direction and match the provided brand name and capitalization.
+- Use a neutral canvas, layered surfaces, purposeful color, and readable type. Make tables and status categories easy to scan. Use text labels with color.
+- Check information order, spacing, alignment, labels, contrast, and visible focus. Fix the main problems on the real pages.
+- For a new screen or major redesign, review desktop, tablet, and phone widths. Check loading, empty, error, and long-content states that apply.
+- For interactive controls, test keyboard access, focus movement, field errors, and dismissal. Use the dialog rules below.
+- Keep the approved product style and task scope. Do not add motion, assets, icons, or dependencies only for decoration. Check licenses and give required credit for third-party assets.
 
-Use [ibelick/ui-skills](https://github.com/ibelick/ui-skills) as a reference for UI tasks. Use `ui-skills-root` to select the smallest useful skill by topic, stack, and goal. Use one skill by default, two when the task needs two clear areas of guidance, and no more than three for a broad review or redesign.
-
-Use [Tabler](https://github.com/tabler/tabler) as a reference for dashboard and admin interface patterns, including tables, forms, navigation, and responsive layouts. Use its patterns as design direction in the main app when they fit the user's chosen design. Do not add Tabler or Bootstrap dependencies unless the user selects them or the approved design needs them. Check Tabler's current documentation for component or class details.
-
-- Use `baseline-ui` for a visual cleanup.
-- Use `fixing-accessibility` when adding or changing interactive controls or accessibility behavior.
-- Use `improve-ui` only for a read-only review. It must not edit product code. It produces evidence-based plans under `design-plans/`. Do not use it when the user asks for direct implementation.
-- Do not install the full collection or add its CLI or MCP server unless the user approves.
-
-Use [Taste Skill](https://github.com/Leonxlnx/taste-skill), skill name `design-taste-frontend`, for a new interface or a major visual redesign. Use its app-screen guidance for dashboards and other working interfaces. Review the result in a browser at desktop, tablet, and phone widths. Fix the main visible issues. Do not run its full workflow for a small component change. Keep the approved product style and task scope. Do not add motion, assets, or dependencies only to follow the skill. When you use third-party images, check the license and include the required credit.
+External UI references, including [ui-skills](https://github.com/ibelick/ui-skills) and [Taste Skill](https://github.com/Leonxlnx/taste-skill), are optional. Fetch them only when network access is permitted and they help the task. If you skip an external reference, report it. Do not install its tools without approval.
 
 ## Asynchronous data and drafts
 

@@ -6,6 +6,8 @@ Generate the first version after the approved application flow is implemented. U
 
 Document the actual implementation. Use plain language, define unfamiliar terms briefly, and connect architectural choices to the problem they solve. Do not modify application code.
 
+Mermaid is permitted inside `docs/ARCHITECTURE_AND_DESIGN.md` for the architecture and sequence diagrams below. Also create or update the required viewable image files in `docs/architecture/` under `skills/documentation/SKILL.md`. The Markdown diagrams do not replace those images. Do not create `docs/DIAGRAMS.md` unless the user requests a separate diagram guide.
+
 Include:
 
 1. **Purpose and scope**
@@ -16,7 +18,7 @@ Include:
    - Main frameworks, libraries, database, and development tools.
    - Each tool's responsibility in this application.
 3. **Directory structure**
-   - An annotated tree of important source, configuration, test, migration, and data files.
+   - An annotated tree of important source, configuration, test, database setup, and data files.
    - Application entry points.
    - Exclude generated files and dependency folders.
 4. **Architecture**

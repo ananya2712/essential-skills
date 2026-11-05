@@ -2,11 +2,13 @@
 
 This file records project-wide defaults and user decisions. The project skill set is in `skills/`. These skill files use the Agent Skills format. Read them from this project when their task applies. They are not installed in a personal skills directory.
 
+These project rules have priority over plugin or personal skills, including TDD and brainstorming. If a skill conflicts with the test timing, approval, or scope rules here, follow this file.
+
 For full-stack application work, read [the consolidated workflow](skills/full-stack-project/SKILL.md). It routes to the backend, frontend, documentation, writing, and presentation skills. For a focused task, read the relevant skill directly. Keep this file as the source for project decisions. Keep detailed workflows in the skill files.
 
 ## Approved stack
 
-- Backend and database: Flask, PostgreSQL, SQLAlchemy 2, and Alembic.
+- Backend and database: Flask, PostgreSQL, and SQLAlchemy 2. Do not add Alembic or schema-versioning tooling for the MVP.
 - API: REST JSON endpoints under `/api/v1`, Flask app factories and blueprints, and Pydantic request and response schemas. Keep `openapi.yaml` aligned with the routes and schemas. Generate the TypeScript client with `openapi-typescript` and `openapi-fetch` when the API contract changes.
 - Frontend: Next.js 14 App Router, React, TypeScript, and Tailwind CSS. Check current official Next.js documentation when you set up or upgrade the stack.
 - Local development: Docker Compose with the frontend, backend, and PostgreSQL. The frontend image installs its own packages. Use the Compose port mapping to report the local URL.
@@ -29,7 +31,7 @@ Load configuration from environment variables. Keep placeholder values in `.env.
 | Task | Read |
 | --- | --- |
 | Full-stack design, implementation, and handoff | [Full-stack project](skills/full-stack-project/SKILL.md) |
-| Flask API, PostgreSQL, SQLAlchemy, or Alembic | [Backend](skills/backend/SKILL.md) |
+| Flask API, PostgreSQL, or SQLAlchemy | [Backend](skills/backend/SKILL.md) |
 | Next.js pages, React components, or UI design | [Frontend](skills/frontend/SKILL.md) |
 | Build progress, decisions, demo guide, diagrams, or production handoff | [Documentation](skills/documentation/SKILL.md) |
 | Project prose, UI copy, comments, docstrings, or slide text | [Writing](skills/writing/SKILL.md) |
